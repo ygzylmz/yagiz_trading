@@ -1,16 +1,19 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+import pandas as pd
+from matplotlib import pyplot as plt
+import numpy as np
+from strategies.run_zipline import run_strategy
+import zipline
+import os
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    zipline_dir = os.path.dirname(zipline.__file__)
+    print("*** Zipline is installed @ {} ***".format(zipline_dir))
+    print("*** PackPub - Hands-on Machine Learning for Algorithmic Trading Bots ***")
+    print("*** SEC001/VID005: Build the Conventional Buy and Hold Strategy ***")
+    perf = run_strategy("buy_and_hold")
+    perf.to_csv("buy_and_hold.csv")
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
